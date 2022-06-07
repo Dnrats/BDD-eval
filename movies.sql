@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `movies-ecf`.`infos_movies` (
   `title` VARCHAR(100) NOT NULL,
   `release_years_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_infos_movies_release_years_idx` (`release_years_id` ASC) VISIBLE,
+  INDEX `fk_infos_movies_release_years_idx` (`release_years_id` ASC),
   CONSTRAINT `fk_infos_movies_release_years`
     FOREIGN KEY (`release_years_id`)
     REFERENCES `movies-ecf`.`release_years` (`id`)
@@ -86,8 +86,8 @@ CREATE TABLE IF NOT EXISTS `movies-ecf`.`categories_has_infos_movies` (
   `categories_id` INT NOT NULL,
   `infos_movies_id` INT NOT NULL,
   PRIMARY KEY (`categories_id`, `infos_movies_id`),
-  INDEX `fk_categories_has_infos_movies_infos_movies1_idx` (`infos_movies_id` ASC) VISIBLE,
-  INDEX `fk_categories_has_infos_movies_categories1_idx` (`categories_id` ASC) VISIBLE,
+  INDEX `fk_categories_has_infos_movies_infos_movies1_idx` (`infos_movies_id` ASC),
+  INDEX `fk_categories_has_infos_movies_categories1_idx` (`categories_id` ASC),
   CONSTRAINT `fk_categories_has_infos_movies_categories1`
     FOREIGN KEY (`categories_id`)
     REFERENCES `movies-ecf`.`categories` (`id`)
@@ -111,8 +111,8 @@ CREATE TABLE IF NOT EXISTS `movies-ecf`.`directors_has_infos_movies` (
   `directors_id` INT NOT NULL,
   `infos_movies_id` INT NOT NULL,
   PRIMARY KEY (`directors_id`, `infos_movies_id`),
-  INDEX `fk_directors_has_infos_movies_infos_movies1_idx` (`infos_movies_id` ASC) VISIBLE,
-  INDEX `fk_directors_has_infos_movies_directors1_idx` (`directors_id` ASC) VISIBLE,
+  INDEX `fk_directors_has_infos_movies_infos_movies1_idx` (`infos_movies_id` ASC),
+  INDEX `fk_directors_has_infos_movies_directors1_idx` (`directors_id` ASC),
   CONSTRAINT `fk_directors_has_infos_movies_directors1`
     FOREIGN KEY (`directors_id`)
     REFERENCES `movies-ecf`.`directors` (`id`)
