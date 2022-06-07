@@ -9,7 +9,7 @@ $req_dir = $db->prepare($req_insert_directors);
 $file = fopen('./film.csv','r');
 if ($file !==FALSE) {
     while(($row = fgetcsv($file, null, ";", "'", "\n"))!== FALSE){
-        $one_dir = explode (",", $row[3]);
+        $one_dir = explode (",", $row[4]);
         for ($i=0; $i < count($one_dir) ; $i++) { 
             $req_dir->bindValue(':name_director', $one_dir[$i], PDO::PARAM_INT);
             $req_dir->execute();
