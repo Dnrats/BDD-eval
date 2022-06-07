@@ -12,13 +12,16 @@ $req_get_id_year = $db->prepare($req_select_id_year);
 $file = fopen('./film.csv','r');
 if ($file !==FALSE) {
     while(($row = fgetcsv($file, null, ";", "'", "\n"))!== FALSE){
-
+        
+        for ($i=0; $i < count($one_dir) ; $i++) { 
         $req_get_id_year->bindValue(':year_movie', $row[1], PDO::PARAM_INT);
         $req_get_id_year->execute();
         $id_year = $req_get_id_year->fetch(PDO::FETCH_ASSOC);
-
+        }
         $req_movies->bindValue(':title', $row[0], PDO::PARAM_STR);
         $req_movies->bindValue(':year_movie', $id_year, PDO::PARAM_INT);
         $req_movies->execute();
+        }
     }
-}
+
+
